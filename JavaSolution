@@ -36,7 +36,7 @@ public class RunLengthEncode {
                 j++;         
             }
                 // if the couter j />= 4 add "/0" +j to encode
-                if (j >= 3)
+                if (j >= 4)
                 {
                   encode +=  "/0" + (j+1) + in.charAt(i);
                   i= i+j;
