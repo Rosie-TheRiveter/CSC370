@@ -1,0 +1,87 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package accesslevelmain;
+import java.util.*;
+/**
+ *
+ * @author freem
+ */
+public class AccessLevelMain {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // Define Scanner Object
+        Scanner keyboard = new Scanner(System.in);
+        // define variables
+        int minPermission;
+        
+        // Test Cases
+        //a
+        int[] rightsa = {0,1,2,3,4,5};
+        minPermission = 2;
+        String a = AccessLevel(rightsa, minPermission);
+        System.out.println("Returns: \"" + a+ "\"");
+        //b
+        int[] rightsb = {5,3,2,10,0};
+        minPermission = 20;
+        String b = AccessLevel(rightsb, minPermission);
+        System.out.println("Returns: \"" + b + "\"");
+        //c
+        int[] rightsc = {};
+        minPermission = 20;
+        String c = AccessLevel(rightsc, minPermission);
+        System.out.println("Returns: \"" + c+ "\"");
+        //d
+        int[] rightsd = {34,78,9,52,11,1};
+        minPermission = 49;
+        String d = AccessLevel(rightsd, minPermission);
+        System.out.println("Returns: \"" + d+ "\"");
+        
+    }
+    
+    static String AccessLevel(int[] r, int min)
+    {
+        //check if empty
+        if (r.length == 0)
+        {
+            return "";
+        }
+        //Add in constraints
+        if (r.length > 50)
+        {
+            throw new IllegalArgumentException("Array length must be from 0 to 50 but it is:" + r.length);
+        }
+        else if (min < 0 || min > 100)
+        {
+            throw new IllegalArgumentException("Minimum Permission must be from 0 to 100 but it is:" + min);
+        }
+        for (int i = 0; i < r.length; i++)
+        {
+            if (r[i]<0 || r[i] >100)
+            {
+                throw new IllegalArgumentException(" must be from 0 to 100 but it is: " + r[i]);
+            }
+        }
+        
+        String Permission= "";
+        
+        for (int i = 0; i < r.length; i++)
+        {
+            if (r[i]>= min)
+            {
+                Permission += "A";
+            }
+            else
+            {
+                Permission += "D";        
+            }
+        } 
+                
+        return Permission;
+    }
+    
+}
