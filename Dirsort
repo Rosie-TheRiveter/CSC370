@@ -1,0 +1,95 @@
+package dirsort;
+import java.util.*;
+
+/**
+ *
+ * @author freem
+ */
+public class Dirsort {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // Initialize keyboard object
+        Scanner keyboard = new Scanner(System.in);
+        
+        // Ask user to input the String array
+        System.out.println("Please input the Dirs");
+        String[] dirs = keyboard.nextLine().split(" ");
+        
+        String[] ans = Sort(dirs);
+        System.out.println("Returns: ");
+        for (String out : ans)
+        {
+            System.out.println(out);
+        }
+        
+        
+        //Test Cases
+        //1
+        String[] dirs1 = {"/","/usr/","/usr/local/","/usr/local/bin/","/games/","/games/snake/","/homework/","/temp/downloads/"};
+        String[] ans1 = Sort(dirs1);
+        System.out.println("Returns: \n ");
+        for (String out : ans1){
+            System.out.println(out);
+        }
+        //2
+        String[] dirs2 = {"/usr/","/usr/local/","/bin/","/usr/local/bin/","/usr/bin/","/bin/local/","/bin/local/"};
+        String[] ans2 = Sort(dirs2);
+        System.out.println("Returns: \n ");
+        for (String out : ans2){
+            System.out.println(out);
+        }
+        //3
+        String[] dirs3 = {"/","/a/","/b/","/c/","/d/","/e/","/f/","/g/"};
+        String[] ans3 = Sort(dirs3);
+        System.out.println("Returns: \n ");
+        for (String out : ans3){
+            System.out.println(out);
+        }
+        //4
+        String[] dirs4 = {"/","/a/","/b/","/c/","/d/","/e/","/f/","/g/","/a/a/","/b/g/f/"};
+        String[] ans4 = Sort(dirs4);
+        System.out.println("Returns: \n ");
+        for (String out : ans4){
+            System.out.println(out);
+        }
+        //5
+        String[] dirs5 = {"/a/b/c/d/e/f/g/h/i/j/k/l/m/n/","/o/p/q/r/s/t/u/v/w/x/y/z/"};
+        String[] ans5 = Sort(dirs5);
+        System.out.println("Returns: \n ");
+        for (String out : ans5){
+            System.out.println(out);
+        }
+        //6
+        String[] dirs6 = {"/a/b/","/ab/cd/","/c/d/","/a/b/c/","/ab/c/d/","/a/bc/d/","/"};
+        String[] ans6 = Sort(dirs6);
+        System.out.println("Returns: \n ");
+        for (String out : ans6){
+            System.out.println(out);
+        }
+        
+    }
+    
+    static String[] Sort(String[] d)
+    {
+        Arrays.sort(d, new Comparator<String>(){
+            @Override
+            public int compare(String one, String two)
+             {
+                int d1 = one.length() - one.replace("/","").length();
+                int d2 = two.length() - two.replace("/","" ).length();
+        
+                 if (d1 !=d2)
+                {
+                    return d1-d2;
+                }
+        
+                return one.compareTo(two);
+             }
+         });
+        return d;
+    }
+       
+}
